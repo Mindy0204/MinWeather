@@ -8,6 +8,17 @@ espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
 composeBom = "2023.08.00"
+okHttpVersion = "4.12.0"
+kotlinSerializationVersion = "1.5.1"
+retrofitVersion = "2.9.0"
+retrofitSerializationVersion = "0.8.0"
+kotlinSerializationPluginVersion = "1.9.0"
+kspVersion = "1.9.0-1.0.13"
+hiltVersion = "2.51.1"
+hiltExtVersion = "1.2.0"
+coilVersion = "2.5.0"
+playServicesLocationVersion = "21.0.1"
+timberVersion = "5.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,8 +35,24 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttpVersion" }
+okHttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttpVersion" }
+kotlin-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationVersion" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
+retrofit-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitSerializationVersion" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltExtVersion" }
+hilt-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hiltVersion" }
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilVersion" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocationVersion" }
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timberVersion" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinSerializationPluginVersion" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 

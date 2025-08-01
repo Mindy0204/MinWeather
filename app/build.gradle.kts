@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -23,10 +26,17 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+
+            buildConfigField("Boolean", "TIMBER_VISIABLE", "false")
+
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+
+        debug {
+            buildConfigField("Boolean", "TIMBER_VISIABLE", "true")
         }
     }
     compileOptions {
@@ -59,7 +69,19 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.okhttp)
+    implementation(libs.okHttp.logging)
+    implementation(libs.kotlin.serialization)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.serialization)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    ksp(libs.hilt.navigation.compose)
+    implementation(libs.coil.compose)
+    implementation(libs.play.services.location)
+    implementation(libs.timber)
     testImplementation(libs.junit)
+    testImplementation(libs.hilt.testing)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
