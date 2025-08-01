@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -21,6 +23,11 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val properties = Properties()
+        project.rootProject.file("local.properties").inputStream().use { properties.load(it) }
+        val apiKey = properties.getProperty("WEATHER_API_KEY") ?: ""
+        buildConfigField("String", "WEATHER_API_KEY", "\"$apiKey\"")
     }
 
     buildTypes {
