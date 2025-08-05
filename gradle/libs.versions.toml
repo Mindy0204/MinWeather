@@ -19,6 +19,7 @@ hiltExtVersion = "1.2.0"
 coilVersion = "2.5.0"
 playServicesLocationVersion = "21.0.1"
 timberVersion = "5.0.1"
+accompanistPermissionsVersion = "0.37.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,7 +48,7 @@ hilt-testing = { group = "com.google.dagger", name = "hilt-android-testing", ver
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilVersion" }
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocationVersion" }
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timberVersion" }
-
+accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanistPermissionsVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

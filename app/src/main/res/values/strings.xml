@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MinWeather</string>
+    <string name="location_status_unable">Unable to access location</string>
 </resources>

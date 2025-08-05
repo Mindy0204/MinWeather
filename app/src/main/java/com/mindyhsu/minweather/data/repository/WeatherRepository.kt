@@ -1,4 +1,4 @@
-package com.mindyhsu.minweather.data
+package com.mindyhsu.minweather.data.repository
 
 import com.mindyhsu.minweather.model.Result
 import com.mindyhsu.minweather.model.weather.CurrentWeather
