@@ -4,6 +4,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Rain(
-    @SerialName("1h") val oneHour: Double? = null
+data class RainAndSnow3H(
+    @SerialName("3h") val threeHour: Double? = null
 )

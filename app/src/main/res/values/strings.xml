@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">MinWeather</string>
     <string name="location_status_unable">Unable to access location</string>
+    <string name="two_parameters_with_comma">%1$s, %2$s</string>
+    <string name="two_parameters_with_slash">%1$s / %2$s</string>
+    <string name="two_parameters_with_space">%1$s %2$s</string>
+    <string name="placeholder">--</string>
+    <string name="temp_with_feels_like">%1$s°C (Feels like %2$s°C)</string>
+    <string name="temp_high_low">H %1$s°C / L %2$s°C</string>
+    <string name="temp_degree">%s°C</string>
+    <string name="humidity">Humidity</string>
+    <string name="pop">Probability of Precipitation</string>
+    <string name="sunrise_and_sunset">Sunrise / Sunset</string>
 </resources>

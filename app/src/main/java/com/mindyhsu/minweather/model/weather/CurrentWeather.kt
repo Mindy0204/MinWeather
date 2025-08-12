@@ -4,18 +4,19 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CurrentWeather(
-    val coord: Coordinator? = null,
-    val weather: List<Weather>? = null,
-    val base: String? = null,
-    val main: Main? = null,
-    val visibility: Int? = null,
-    val wind: Wind? = null,
-    val rain: Rain? = null,
-    val clouds: Clouds? = null,
-    val dt: Long? = null,
-    val sys: Sys? = null,
-    val timezone: Int? = null,
-    val id: Int? = null,
-    val name: String? = null,
-    val cod: Int? = null
+    val coord: Coordinator,
+    val weather: List<Weather>,
+    val base: String,
+    val main: Main,
+    val visibility: Int,
+    val wind: Wind,
+    val rain: RainAndSnow? = null,
+    val snow: RainAndSnow? = null,
+    val clouds: Clouds,
+    val dt: Long,
+    val sys: Sys,
+    val timezone: Int,
+    val id: Int,
+    val name: String,
+    val cod: Int
 )

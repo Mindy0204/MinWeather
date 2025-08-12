@@ -10,12 +10,13 @@ import com.mindyhsu.minweather.R
 import com.mindyhsu.minweather.data.repository.LocationRepository
 import com.mindyhsu.minweather.data.repository.WeatherRepository
 import com.mindyhsu.minweather.model.Result
-import com.mindyhsu.minweather.model.weather.CurrentWeather
+import com.mindyhsu.minweather.model.weather.WeatherUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,8 +28,8 @@ class WeatherViewModel @Inject constructor(
     private val _locationDesRes = MutableStateFlow<Int?>(null)
     val locationDesRes = _locationDesRes.asStateFlow()
 
-    private val _currentWeather = MutableStateFlow(CurrentWeather())
-    val currentWeather = _currentWeather.asStateFlow()
+    private val _weatherUiModel = MutableStateFlow<WeatherUiModel?>(null)
+    val weatherUiModel = _weatherUiModel.asStateFlow()
 
     @OptIn(ExperimentalPermissionsApi::class)
     fun handlePermissionResult(permissions: List<PermissionState>) {
@@ -52,31 +53,38 @@ class WeatherViewModel @Inject constructor(
         viewModelScope.launch {
             when (val result = locationRepository.getLastLocation()) {
                 is Result.Success -> {
-                    getCurrentWeather(
+                    loadWeatherData(
                         result.data.latitude.toString(),
                         result.data.longitude.toString()
                     )
                 }
 
-                is Result.Error -> TODO()
-                is Result.Fail -> TODO()
-                Result.Loading -> TODO()
+                is Result.Error -> {
+                    Timber.d("[WeatherViewModel] getCurrentLocation result error")
+                }
+
+                is Result.Fail -> {
+                    Timber.d("[WeatherViewModel] getCurrentLocation result fail")
+                }
+
+                is Result.Loading -> {
+                    Timber.d("[WeatherViewModel] getCurrentLocation loading")
+                }
             }
         }
     }
 
-    private fun getCurrentWeather(latitude: String, longitude: String) {
+    private fun loadWeatherData(latitude: String, longitude: String) {
         viewModelScope.launch {
-            when (val result = weatherRepository.getCurrentWeather(latitude, longitude)) {
-                is Result.Success -> {
-                    _currentWeather.update {
-                        result.data
-                    }
-                }
+            val currentWeather = weatherRepository.getCurrentWeather(latitude, longitude)
+            val forecast = weatherRepository.get5DaysForecast(latitude, longitude)
 
-                is Result.Error -> TODO()
-                is Result.Fail -> TODO()
-                Result.Loading -> TODO()
+            if (currentWeather is Result.Success && forecast is Result.Success) {
+                _weatherUiModel.update {
+                    WeatherUiModel(currentWeather.data, forecast.data)
+                }
+            } else {
+                Timber.d("[WeatherViewModel] loadWeatherData result error")
             }
         }
     }
