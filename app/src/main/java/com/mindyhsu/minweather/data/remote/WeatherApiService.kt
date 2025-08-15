@@ -1,5 +1,6 @@
 package com.mindyhsu.minweather.data.remote
 
+import com.mindyhsu.minweather.model.geo.LocationInfo
 import com.mindyhsu.minweather.model.weather.CurrentWeather
 import com.mindyhsu.minweather.model.weather.Forecast
 import retrofit2.http.GET
@@ -17,4 +18,10 @@ interface WeatherApiService {
         @Query("lat") latitude: String,
         @Query("lon") longitude: String
     ): Forecast
+
+    @GET("geo/1.0/direct")
+    suspend fun getGeocoding(
+        @Query("q") locationName: String,
+        @Query("limit") limit: Int?
+    ): List<LocationInfo>
 }

@@ -11,4 +11,6 @@ data class LocationInfo(
     val lon: Double,
     val country: String,
     val state: String? = null
-)
+) {
+    fun displayName() = listOfNotNull(name, state, country).joinToString(", ")
+}

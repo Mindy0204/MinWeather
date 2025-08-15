@@ -1,6 +1,8 @@
 package com.mindyhsu.minweather.di
 
 import android.content.Context
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.mindyhsu.minweather.common.NetworkConstants.CONTENT_TYPE
 import com.mindyhsu.minweather.common.NetworkConstants.WEATHER_URL
@@ -26,6 +28,13 @@ object DataModule {
 
     @Singleton
     @Provides
+    fun provideFusedLocationProviderClient(
+        @ApplicationContext context: Context
+    ): FusedLocationProviderClient =
+        LocationServices.getFusedLocationProviderClient(context)
+
+    @Singleton
+    @Provides
     fun provideWeatherApi(): WeatherApiService {
         val json = Json { ignoreUnknownKeys = true }
         val retrofit = Retrofit.Builder()
@@ -45,7 +54,10 @@ object DataModule {
 
     @Singleton
     @Provides
-    fun provideLocationDataSource(@ApplicationContext context: Context): LocationDataSource {
-        return LocationDataSourceImpl(context)
+    fun provideLocationDataSource(
+        locationClient: FusedLocationProviderClient,
+        apiService: WeatherApiService
+    ): LocationDataSource {
+        return LocationDataSourceImpl(locationClient, apiService)
     }
 }

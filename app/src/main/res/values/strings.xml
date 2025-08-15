@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MinWeather</string>
-    <string name="location_status_unable">Unable to access location</string>
+    <string name="location_status_unable">Unable to access location, update location permissions in settings to get weather information of your location.</string>
     <string name="two_parameters_with_comma">%1$s, %2$s</string>
     <string name="two_parameters_with_slash">%1$s / %2$s</string>
     <string name="two_parameters_with_space">%1$s %2$s</string>
@@ -11,4 +11,5 @@
     <string name="humidity">Humidity</string>
     <string name="pop">Probability of Precipitation</string>
     <string name="sunrise_and_sunset">Sunrise / Sunset</string>
+    <string name="search_placeholder">Search for a location</string>
 </resources>
