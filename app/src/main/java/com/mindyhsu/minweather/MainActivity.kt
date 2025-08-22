@@ -4,7 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.mindyhsu.minweather.ui.HomeScreen
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
+import com.mindyhsu.minweather.feature.home.HomeRoute
 import com.mindyhsu.minweather.ui.theme.MinWeatherTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,7 +19,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MinWeatherTheme {
-                HomeScreen()
+                Surface(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    HomeRoute() // TODO: change to NavHost
+                }
             }
         }
     }

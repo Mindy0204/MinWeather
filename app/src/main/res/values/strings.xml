@@ -10,6 +10,12 @@
     <string name="temp_degree">%s°C</string>
     <string name="humidity">Humidity</string>
     <string name="pop">Probability of Precipitation</string>
+    <string name="percentage">%s%%</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="meter_per_sec">%s m/s</string>
+    <string name="visibility">Visibility</string>
+    <string name="meter">%s m</string>
     <string name="sunrise_and_sunset">Sunrise / Sunset</string>
     <string name="search_placeholder">Search for a location</string>
+    <string name="search_result_empty">No results found for this location. Please try a different keyword.</string>
 </resources>
